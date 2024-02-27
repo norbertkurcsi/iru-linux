@@ -208,7 +208,7 @@ Szöveg a nano-ba:
 ```
 #!/bin/bash
 
-lscpu | grep "Vendor ID' | cut -d ":" -f2 | tr -d '[:space]'
+lscpu | grep 'Vendor ID' | cut -d ":" -f2 | tr -d '[:space]'
 echo""
 ```
 Hogy futtatni lehessen:
@@ -216,6 +216,9 @@ Hogy futtatni lehessen:
 chmod +x 3.1.sh
 ```
 ### 3.2
+```
+nano 3_2.sh
+```
 ```
 #!/bin/bash
 empty_lines=$(grep -c '^$' "$1")
