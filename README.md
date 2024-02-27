@@ -195,4 +195,32 @@ Options +Indexes
 systemctl restart apache2
 ```
 
+## 3. feladatcsoport
+Ajánlott a bin mappában dolgozni:
+```
+cp /bin
+```
+### 3.1
+```
+nano 3_1.sh
+```
+Szöveg a nano-ba:
+```
+#!/bin/bash
 
+lscpu | grep "Vendor ID' | cut -d ":" -f2 | tr -d '[:space]'
+echo""
+```
+Hogy futtatni lehessen:
+```
+chmod +x 3.1.sh
+```
+### 3.2
+```
+#!/bin/bash
+empty_lines=$(grep -c '^$' "$1")
+echo "$empty_lines"
+```
+```
+chmod +x 3_2.sh
+```
