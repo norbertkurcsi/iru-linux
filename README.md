@@ -196,9 +196,12 @@ systemctl restart apache2
 ```
 
 ## 3. feladatcsoport
-Ajánlott a bin mappában dolgozni:
+- root felhasználót kell használni itt is
+- létre kell hozni egy bin mappát a laboruser felhasználónak
 ```
-cd /bin
+cd /home/laboruser
+mkdir bin
+cd bin
 ```
 ### 3.1
 ```
@@ -224,7 +227,7 @@ echo "$ures_sorok"
 ```
 chmod +x 3_2.sh
 ```
-### 3.3 -meg nem jó
+### 3.3 - nem biztos hogy jó
 
 ```
 nano input.txt
@@ -243,22 +246,13 @@ nano 3_3.sh
 ```
 Ez úgy csinálja hogy a kezdő 0-t is jól kezeli, theát pl 08-at is 2-vel oszthatónak veszi, de lehet a példa alapján nem így kellene:
 ```
-#!/bin/bash
-
-# Received number
 column_number=$1
 
-# Process the data
 while read -r line; do
-    # Extract the first column
     first_column=$(echo "$line" | awk '{print $1}')
-    # Check if the first column contains a whole number
     if [[ $first_column =~ ^[1-9]+$ ]]; then
-        # Convert the first column to decimal (to handle leading zeros)
         first_column_dec=$((10#$first_column))
-        # Check if the number in the first column is divisible by the column number provided as $
         if (( first_column_dec % column_number == 0 )); then
-            # Swap the contents of the second and fifth columns
             swapped_line=$(echo "$line" | awk '{temp=$2; $2=$5; $5=temp; print}')
             echo "$swapped_line"
         fi
@@ -283,7 +277,6 @@ echo $$
 ```
 chmod +x 3_4.sh
 ```
-### 3.5 - nincs meg
 ### 3.6
 ```
 nano diffscript.sh
@@ -312,5 +305,3 @@ diff -u $2 $1 | /home/laboruser/bin/diffscript.sh
 ```
 chmod +x 3_6.sh
 ```
-### 3.7 - nincs meg
-### 3.8 - nincs meg
