@@ -206,28 +206,25 @@ nano 3_1.sh
 ```
 Szöveg a nano-ba:
 ```
-#!/bin/bash
-
-lscpu | grep 'Vendor ID' | cut -d ":" -f2 | tr -d '[:space]'
-echo""
+lscpu | grep 'Vendor ID' | cut -d ":" -f2 | tr -d '[:space:]'
+echo ""
 ```
 Hogy futtatni lehessen:
 ```
-chmod +x 3.1.sh
+chmod +x 3_1.sh
 ```
 ### 3.2
 ```
 nano 3_2.sh
 ```
 ```
-#!/bin/bash
-empty_lines=$(grep -c '^$' "$1")
-echo "$empty_lines"
+ures_sorok= grep -c '^$'<&0
+echo "$ures_sorok"
 ```
 ```
 chmod +x 3_2.sh
 ```
-### 3.3
+### 3.3 -meg nem jó
 
 ```
 nano input.txt
@@ -269,5 +266,50 @@ while read -r line; do
 done
 ```
 ```
-chmod +x 3.1.sh
+chmod +x 3_3.sh
 ```
+### 3.4
+```
+nano 3_4.sh
+```
+```
+whoami
+date +"%Y. %m. %d."
+who | cut -d " " -f1 | sort | uniq
+who -b | cut -d" " -f 13-14
+echo $$
+```
+```
+chmod +x 3_4.sh
+```
+### 3.5 - nincs meg
+### 3.6
+```
+nano diffscript.sh
+```
+```
+COUNTER=0;
+while IFS= read -r line;
+do
+if [[ $line == -* && $line != --* ]];
+then
+COUNTER=$((COUNTER+1))
+fi
+done
+echo $COUNTER;
+```
+```
+chmod +x diffscript.sh
+```
+```
+nano 3_6.sh
+```
+```
+diff -u $1 $2 | /home/laboruser/bin/diffscript.sh
+diff -u $2 $1 | /home/laboruser/bin/diffscript.sh
+```
+```
+chmod +x 3_6.sh
+```
+### 3.7 - nincs meg
+### 3.8 - nincs meg
