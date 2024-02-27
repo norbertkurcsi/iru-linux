@@ -227,3 +227,47 @@ echo "$empty_lines"
 ```
 chmod +x 3_2.sh
 ```
+### 3.3
+
+```
+nano input.txt
+```
+```
+11 a1 b c1 d
+08 a0 b c0 d
+12 a2 b c2 d
+13 a3 b c3 d
+1a a0 b c0 d
+14 a4 b c4 d
+15 a5 b c5 d
+```
+```
+nano 3_3.sh
+```
+Ez úgy csinálja hogy a kezdő 0-t is jól kezeli, theát pl 08-at is 2-vel oszthatónak veszi, de lehet a példa alapján nem így kellene:
+```
+#!/bin/bash
+
+# Received number
+column_number=$1
+
+# Process the data
+while read -r line; do
+    # Extract the first column
+    first_column=$(echo "$line" | awk '{print $1}')
+    # Check if the first column contains a whole number
+    if [[ $first_column =~ ^[0-9]+$ ]]; then
+        # Convert the first column to decimal (to handle leading zeros)
+        first_column_dec=$((10#$first_column))
+        # Check if the number in the first column is divisible by the column number provided as argument
+        if (( first_column_dec % column_number == 0 )); then
+            # Swap the contents of the second and fifth columns
+            swapped_line=$(echo "$line" | awk '{temp=$2; $2=$5; $5=temp; print}')
+            echo "$swapped_line"
+        fi
+    fi
+done
+```
+```
+chmod +x 3.1.sh
+```
