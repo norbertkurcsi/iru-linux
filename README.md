@@ -198,7 +198,7 @@ systemctl restart apache2
 ## 3. feladatcsoport
 Ajánlott a bin mappában dolgozni:
 ```
-cp /bin
+cd /bin
 ```
 ### 3.1
 ```
@@ -253,10 +253,10 @@ while read -r line; do
     # Extract the first column
     first_column=$(echo "$line" | awk '{print $1}')
     # Check if the first column contains a whole number
-    if [[ $first_column =~ ^[0-9]+$ ]]; then
+    if [[ $first_column =~ ^[1-9]+$ ]]; then
         # Convert the first column to decimal (to handle leading zeros)
         first_column_dec=$((10#$first_column))
-        # Check if the number in the first column is divisible by the column number provided as argument
+        # Check if the number in the first column is divisible by the column number provided as $
         if (( first_column_dec % column_number == 0 )); then
             # Swap the contents of the second and fifth columns
             swapped_line=$(echo "$line" | awk '{temp=$2; $2=$5; $5=temp; print}')
@@ -264,6 +264,7 @@ while read -r line; do
         fi
     fi
 done
+
 ```
 ```
 chmod +x 3_3.sh
