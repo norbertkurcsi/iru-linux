@@ -1,4 +1,4 @@
-# IRU Labor - Linux
+# IRU Labor - Linux (A csoport)
 ## Elindulás
 - le kell tötlteni githubról a megadott file okat a gazdagépen
 - WinScp-vel fel kell másolni a virtuális gépre
