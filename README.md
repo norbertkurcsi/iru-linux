@@ -244,21 +244,11 @@ nano input.txt
 ```
 nano 3_3.sh
 ```
-Ez úgy csinálja hogy a kezdő 0-t is jól kezeli, theát pl 08-at is 2-vel oszthatónak veszi, de lehet a példa alapján nem így kellene:
 ```
-column_number=$1
+input=$(cat -)
 
-while read -r line; do
-    first_column=$(echo "$line" | awk '{print $1}')
-    if [[ $first_column =~ ^[1-9]+$ ]]; then
-        first_column_dec=$((10#$first_column))
-        if (( first_column_dec % column_number == 0 )); then
-            swapped_line=$(echo "$line" | awk '{temp=$2; $2=$5; $5=temp; print}')
-            echo "$swapped_line"
-        fi
-    fi
-done
-
+echo "$input" | awk '/^[1-9][0-9]*/ && $1 % '$1' == 0 { t = $2; $2 = $5; $5 = t; print }'
+echo ""
 ```
 ```
 chmod +x 3_3.sh
@@ -304,4 +294,23 @@ diff -u $2 $1 | /home/laboruser/bin/diffscript.sh
 ```
 ```
 chmod +x 3_6.sh
+```
+### 3.7
+```
+nano 3_7.sh
+```
+```
+declare -A group_sums
+
+while IFS=, read -r item group value; do
+    product=$((group * value))
+    group_sums[$item]=$((group_sums[$item] + product))
+done
+
+for item in "${!group_sums[@]}"; do
+    echo "$item: ${group_sums[$item]}"
+done
+```
+```
+chmod +x 3_7.sh
 ```
