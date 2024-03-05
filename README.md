@@ -32,7 +32,8 @@ nano etc/sudoers
 ```
 - a megnyitott fálhoz hozzá kell adni a következő sort
 ```
-mekkelek  All(ALL:ALL) ALL
+(már ott van valószínűleg) root ALL=(ALL:ALL) ALL
+mekkelek  All=(ALL:ALL) ALL
 ```
 ### 1.8
 ```
