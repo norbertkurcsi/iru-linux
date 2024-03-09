@@ -254,6 +254,32 @@ echo ""
 ```
 chmod +x 3_3.sh
 ```
+
+Másik megoldás:
+
+```
+if [ $# -ne 1 ];
+then
+    exit 1
+fi
+
+if ! [[ $1 =~ ^[1-9][0-9]*$ ]];
+then
+    exit 1
+fi
+
+divisor=$1
+
+while read -r col1 col2 col3 col4 col5;
+do
+    if [[ $col1 =~ ^[1-9][0-9]*$ ]] && ((col1 % divisor == 0));
+    then
+        echo "$col1 $col2 $col3 ${col4}${col5}"
+    fi
+done
+exit 0
+```
+
 ### 3.4
 ```
 nano 3_4.sh
