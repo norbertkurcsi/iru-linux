@@ -30,6 +30,10 @@ passwd mekkelek
 ```
 nano etc/sudoers
 ```
+Ha van sudo, elég az alábbi parancs:
+```
+visudo
+```
 - a megnyitott fálhoz hozzá kell adni a következő sort
 ```
 (már ott van valószínűleg) root ALL=(ALL:ALL) ALL
