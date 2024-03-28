@@ -84,13 +84,13 @@ nano irulabor.conf
 ```
 - a megnyitott konfig fálból ki kell tötölni a köv sort:
 ```
-DocumentRoot /var/wwww/index
+DocumentRoot /var/www/index
 ```
 - majd hozzá kel adni a köv 3 sort
 ```
 ServerName irulabor.vmware
 ServerAlias *.irulabor.vmware
-DocumentRoot /var/wwww/irulabor
+DocumentRoot /var/www/irulabor
 ```
 - menteni a fájlt
 ```
